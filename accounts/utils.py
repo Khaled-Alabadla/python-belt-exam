@@ -1,7 +1,7 @@
 from .models import *
 
 def user_exists(request):
-  if request.session['user_id']:
+  if request.session.get('user_id'):
     return True
   return False
 
