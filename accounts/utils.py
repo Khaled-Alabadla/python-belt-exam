@@ -7,3 +7,4 @@ def user_exists(request):
 
 def get_user(request):
   return User.objects.get(id=request.session['user_id'])
+

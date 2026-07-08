@@ -36,14 +36,17 @@ class TreeManager(models.Manager):
             if date_obj > datetime.today().date():
                 errors['date'] = "Date cannot be in the future."
 
-            if not notes:
-                errors['notes'] = "Notes field is required"
+        if not notes:
+            errors['notes'] = "Notes field is required"
 
-            if notes and len(notes) > 50:
-                errors['notes'] = "notes should be at maximum 50 characters"
+        if notes and len(notes) > 50:
+            errors['notes'] = "notes should be at maximum 50 characters"
+        
+        if not zip_code:
+            errors['zip_code'] = 'Zip Code is required'
 
-            if not zip_code.isdigit() or len(zip_code) != 5:
-                errors['zip_code'] = "Zip Code should be a 5 digit number"
+        elif not zip_code.isdigit() or len(zip_code) != 5:
+            errors['zip_code'] = "Zip Code should be a 5 digit number"
 
         return errors
 
